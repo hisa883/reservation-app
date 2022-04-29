@@ -1,0 +1,15 @@
+current directory: /Users/hisa/workspace/ReservationApp/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/hisa/.rbenv/versions/2.6.8/bin/ruby -r ./siteconf20220429-67875-1vn1sio.rb extconf.rb
+creating Makefile
+
+current directory: /Users/hisa/workspace/ReservationApp/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/hisa/workspace/ReservationApp/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/hisa/workspace/ReservationApp/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20220429-67875-97l510/skiptrace/internal
