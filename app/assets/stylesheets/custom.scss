@@ -13,6 +13,23 @@ textarea {
   resize: vertical;
 }
 
+.back{
+  background-image: image-url('karaoke.jpg');
+  height: 1000px;
+  background-size:cover;
+}
+
+.back2{
+  background-color: black;
+}
+
+.back3{
+
+}
+
+.head-back{
+  background-color: red;
+}
 .center {
   text-align: center;
 }
@@ -50,11 +67,19 @@ p {
 
 /* header */
 
+.head:hover{
+}
+.navbar:hover{
+}
+li:hover {
+  text-decoration: none;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
+  font-size: 2.1em;
+  color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -62,7 +87,6 @@ p {
 }
 
 #logo:hover {
-  color: #fff;
   text-decoration: none;
 }
 
@@ -70,7 +94,7 @@ p {
 
 .debug_dump {
   clear: both;
-  float: left;
+  float: left; 
   width: 100%;
   margin-top: 45px;
   -moz-box-sizing:    border-box;
