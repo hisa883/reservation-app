@@ -1,0 +1,8 @@
+.bundle
+.idea
+.rakeTasks
+.yardoc
+doc
+pkg
+Gemfile.lock
+*.swp

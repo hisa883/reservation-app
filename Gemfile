@@ -16,6 +16,8 @@ gem 'bootstrap-sass'
 gem 'will_paginate' # この行を追加してください。
 gem 'bootstrap-will_paginate' # この行を追加してください。
 gem "jquery-rails"
+gem 'rspotify'
+gem 'dotenv-rails'
 # Use sqlite3 as the database for Active Record
 
 # Use Puma as the app server
