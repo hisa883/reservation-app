@@ -3,4 +3,36 @@
   <h1>カラオケ予約システム</h1>
   <p>カラオケの予約を行えます。</p>
   <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-info" %>
+  <%= link_to 'Sign in with Spotify', '/auth/spotify', method: :post %>
+</div>
+
+<h3>アーティスト名で検索</h3>
+<%= form_with url: root_path, method: :get, local: true do |form| %>
+<%= form.text_field :search %>
+<%= form.submit 'アーティスト名検索', name: nil %>
+<% end %>
+
+
+<h1>検索結果</h1>
+<div>
+  <% if @searchartists.present? %>
+    <% @searchartists.each do |searchartist| %>
+      <div>
+        <h3><%= searchartist.name %></h3>
+          <% if searchartist.images.any?%>
+            <%image = searchartist.images[1]%>
+            <%= image_tag(image["url"])%>
+              <h3><%= searchartist.albums.first.name %></h3>
+              <% searchartist.albums.first.tracks.each do |song| %>
+              <p><%= song.name %></p>
+              <% end %>
+             
+
+
+          <%else%>
+            <%# <%= image_tag("default.jpg")%> %>
+          <%end%>
+      </div>
+    <%end%>
+  <%end%>
 </div>

@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# config/application.rb
+
+RSpotify::authenticate("c98c972bd32941b692523e6c51afc225", "003441f078c3464897e59c5ec9aeaa99")
+
 module ReservationApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

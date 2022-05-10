@@ -1,5 +1,9 @@
 current directory: /Users/hisa/workspace/ReservationApp/vendor/bundle/ruby/2.6.0/gems/unf_ext-0.0.8.1/ext/unf_ext
+<<<<<<< HEAD
 /Users/hisa/.rbenv/versions/2.6.8/bin/ruby -r ./siteconf20220505-22975-12yhq13.rb extconf.rb
+=======
+/Users/hisa/.rbenv/versions/2.6.8/bin/ruby -r ./siteconf20220505-24709-7q3vzr.rb extconf.rb
+>>>>>>> api
 checking for -lstdc++... yes
 creating Makefile
 
@@ -35,4 +39,8 @@ linking shared-object unf_ext.bundle
 
 current directory: /Users/hisa/workspace/ReservationApp/vendor/bundle/ruby/2.6.0/gems/unf_ext-0.0.8.1/ext/unf_ext
 make "DESTDIR=" install
+<<<<<<< HEAD
 /usr/bin/install -c -m 0755 unf_ext.bundle ./.gem.20220505-22975-8rjgt3
+=======
+/usr/bin/install -c -m 0755 unf_ext.bundle ./.gem.20220505-24709-1ksxrmq
+>>>>>>> api
