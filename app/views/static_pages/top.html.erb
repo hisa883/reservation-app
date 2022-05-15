@@ -5,34 +5,64 @@
   <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-info" %>
   <%= link_to 'Sign in with Spotify', '/auth/spotify', method: :post %>
 </div>
-
-<h3>アーティスト名で検索</h3>
-<%= form_with url: root_path, method: :get, local: true do |form| %>
-<%= form.text_field :search %>
-<%= form.submit 'アーティスト名検索', name: nil %>
-<% end %>
-
-
-<h1>検索結果</h1>
-<div>
-  <% if @searchartists.present? %>
-    <% @searchartists.each do |searchartist| %>
-      <div>
-        <h3><%= searchartist.name %></h3>
-          <% if searchartist.images.any?%>
-            <%image = searchartist.images[1]%>
-            <%= image_tag(image["url"])%>
-              <h3><%= searchartist.albums.first.name %></h3>
-              <% searchartist.albums.first.tracks.each do |song| %>
-              <p><%= song.name %></p>
-              <% end %>
-             
-
-
-          <%else%>
-            <%# <%= image_tag("default.jpg")%> %>
-          <%end%>
+<div class="col-md-10 col-md-offset-1">
+  <% if @searchartist.present? %>
+    <div>
+      <div class="center">
+        <% if @searchartist.images.any?%>
+          <%image = @searchartist.images[1]%>
+          <%= image_tag(image["url"])%>
+        <% end %>
       </div>
-    <%end%>
+      <h1><%= @searchartist.name %></h1>
+      <table class="table table-condensed" id="table-users">
+        <th>
+          <td>
+            <p2>人気曲</p2>
+          </td>
+        </th>
+        <% @searchartist.top_tracks(:JP).each do |song| %>
+          <tr>
+            <td>
+              <% if song.album.images.any? %>
+                <%image = song.album.images[2]%>
+                <%= image_tag(image["url"])%>
+              <% end %>
+            </td>
+            <td>
+              <p2><%= song.name %></p2>
+            </td>
+            <td><audio src="<%= song.preview_url%>" controls></audio></td>
+          </tr>
+        <%end%>
+      </table>
+
+    </div>
+  <%end%>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
+  <% if @Top_list.present? %>
+    <div>
+      <h3><%= @Top_list.name %></h3>
+      <table class="table table-condensed" id="table-users">
+        <% @Top_list.tracks.each_with_index do |song, i| %>
+          <tr>
+            <td><p><%= i+1 %></p></td>
+            <td>
+              <% if song.album.images.any? %>
+                <%image = song.album.images[2]%>
+                <%= image_tag(image["url"])%>
+              <% end %>
+            </td>
+            <td>
+              <p2><%= song.name %></p2>
+              <p><%= link_to song.artists[0].name, root_path(search: song.artists[0].id), :style=>"color:gray;" %></p>
+            </td>
+            <td><audio src="<%= song.preview_url%>" controls></audio></td>
+          </tr>
+        <%end%>
+      </table>
+    </div>
   <%end%>
 </div>
