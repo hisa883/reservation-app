@@ -9,6 +9,10 @@ class ReservationsController < ApplicationController
    def new
     @reservation = Reservation.new
     @day = params[:day]
+    if Reservation.find_by(user_id: params[:user_id], day: params[:day])
+      flash[:danger] = "同じ日に２個以上の予約はできません"
+      redirect_to store_reservations_path(@store)
+    end
     # @time = params[:time]
     # @start_time = DateTime.parse(@day + " " + @time + " " + "JST")
 
@@ -24,6 +28,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    debugger
     @reservation = Reservation.new(reservation_params)
     @reservation.time = "#{reservation_params[:start_time_h]}:#{reservation_params[:start_time_m]} "
     if @reservation.save

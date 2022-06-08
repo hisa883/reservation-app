@@ -25,7 +25,7 @@
               <% else %>
                 <% passed_block.call day, sorted_events.fetch(day, []) %>
               <% end %>
-              <%= link_to new_store_reservation_path(day: day), class: "widelink" do %>
+              <%= link_to new_store_reservation_path(day: day, user_id: current_user.id), class: "widelink" do %>
                 <% if Date.current < day %>
                   <%= '◯' %>
                 <% end %>
