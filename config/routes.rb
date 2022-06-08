@@ -12,7 +12,18 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/auth/spotify/callback', to: 'users#spotify'
   
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
+  resources :users do
+    member do
+      get 'reservations'
+      get 'reservations_list'
+      get 'all_reservation'
+    end
+  end
+
+  resources :stores do
+    resources :reservations
+  end
   # resources :password_resets, only: [:new, :create, :edit, :update]
 end

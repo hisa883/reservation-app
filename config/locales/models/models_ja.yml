@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      reservation: 予約
     attributes:
         user:
           id: ID
@@ -11,3 +12,9 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+        reservation:
+          id: ID
+          use_time: 利用予定時間
+          start_time_h: 利用開始時間
+          start_time_m: 利用開始時間
+          

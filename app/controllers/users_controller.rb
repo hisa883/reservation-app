@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :reservations]
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :reservations]
+  before_action :not_logged_in_user, only: [:new]
+  before_action :correct_user, only: [:edit, :update, :reservations]
+  before_action :admin_user, only: [:destroy, :all_reservation, :reservations_list, :index]
+  before_action :correct_or_admin_user, only: [:show]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -44,6 +46,19 @@ class UsersController < ApplicationController
   def show
   end
 
+  def reservations
+    @reservations = Reservation.all.where(user_id: @user.id).where("day >= ?", Date.current)
+  end
+
+  def reservations_list
+    @stores = Store.all
+  end
+
+  def all_reservation
+    @reservations = Reservation.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
+    @stores = Store.all
+  end
+
   private
 
     def user_params
@@ -63,6 +78,13 @@ class UsersController < ApplicationController
       end
     end
 
+    def not_logged_in_user
+      if logged_in?
+        flash[:danger] = "既にログイしてます。"
+        redirect_to root_url
+      end
+    end
+
     # アクセスしたユーザーが現在ログインしているユーザーか確認します。
     def correct_user
       redirect_to(root_url) unless current_user?(@user)
@@ -71,5 +93,9 @@ class UsersController < ApplicationController
     # システム管理権限所有かどうか判定します。
     def admin_user
       redirect_to root_url unless current_user.admin?
+    end
+
+    def correct_or_admin_user
+      redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
 end

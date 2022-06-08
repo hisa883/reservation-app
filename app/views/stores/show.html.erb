@@ -1,0 +1,9 @@
+<% provide(:title, @store.name) %>
+<div class="col-md-10 col-md-offset-1 center">
+  <%= image_tag @store.image, class: "store-show" %>
+  <h3><%= @store.name %></h3>
+  <p>部屋数: <%= @store.number_of_rooms %></p>
+  <p><%= link_to "tel:" + @store.tel, "tel:" + @store.tel %></p>
+  <p><%= @store.detail %></p>
+  <%= link_to "予約する", store_reservations_path(@store), class: "btn btn-lg btn-info" %>
+</div>

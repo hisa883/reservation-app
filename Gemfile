@@ -17,7 +17,10 @@ gem 'will_paginate' # この行を追加してください。
 gem 'bootstrap-will_paginate' # この行を追加してください。
 gem "jquery-rails"
 gem 'rspotify'
-gem 'dotenv-rails'
+gem 'dotenv-rails' #使ってない
+gem 'bootstrap3-datetimepicker-rails' #使ってない
+gem 'momentjs-rails', '>= 2.9.0' #使ってない
+gem "simple_calendar", "~> 2.0"
 # Use sqlite3 as the database for Active Record
 
 # Use Puma as the app server

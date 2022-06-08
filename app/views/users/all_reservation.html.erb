@@ -1,0 +1,13 @@
+<% provide(:title, "全ての予約リスト") %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>予約リスト</h1>
+    </div>
+    <div class="col-12 mt-3">
+      <%= week_calendar events: @reservations do |date, reservations| %>
+        <%= date.day %>
+      <% end %>
+    </div>
+  </div>
+</div>

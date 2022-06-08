@@ -1,0 +1,53 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+    <h1 class="calendar-title"><%= t('date.month_names')[start_date.month] %></h1>
+    <%= link_to t('simple_calendar.previous', default: '前週'), calendar.url_for_previous_view %>
+    <% if calendar.number_of_weeks == 1 %>
+      <span class="calendar-title"><%= t('simple_calendar.week', default: '1週間') %></span>
+    <% else %>
+      <span class="calendar-title"><%= t('simple_calendar.week', default: '1週間') %></span>
+    <% end %>
+    <%= link_to t('simple_calendar.next', default: '翌週'), calendar.url_for_next_view %>
+  </div>
+  <% @stores.each do |store| %>
+    <table class="table table-striped">
+      <h1><%= store.name %></h1>
+      <thead>
+        <tr>
+          <% date_range.slice(0, 7).each do |day| %>
+            <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% date_range.each_slice(7) do |week| %>
+          <tr>
+            <% week.each do |day| %>
+              <% reservations = Reservation.all.where(store_id: store.id, day: day) %>
+              <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+                <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                  <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                <% else %>
+                  <% passed_block.call day, sorted_events.fetch(day, []) %>
+                <% end %>
+                
+                <% reservations.each do |reservation| %>
+                  <% unless reservation.nil? %>
+                    <br>
+                    <%= User.find(reservation.user_id).name %>
+                    <%= reservation.time %>
+                    <% if reservation.use_time == "フリータイム(最大6時間)" %>
+                      フリータイム
+                    <% else %>
+                    <%= reservation.use_time %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

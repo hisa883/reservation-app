@@ -1,0 +1,29 @@
+<% provide(:title, 'All Stores') %>
+<h1>今日の予約リスト</h1>
+
+<div class="col-md-10 col-md-offset-1">
+  <% @stores.each do |store| %>
+    <table class="table table-condensed table-hover" id="table-users">
+      <h1><%= store.name %></h1>
+      <% reservations = Reservation.all.where(store_id: store.id) %>
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>開始予定時間</th>
+          <th>利用時間</th>
+        </tr>
+      </thead>
+      <% reservations.each do |reservation| %>
+        <% if reservation.day ==  Date.current %>
+          <tbody>
+          <tr>
+            <td><%= User.find(reservation.user_id).name %></td>
+            <td><%= reservation.time %></td>
+            <td><%= reservation.use_time %></td>
+          </tr>
+          </tbody>
+        <% end %>
+      <% end %>
+    </table>
+  <% end %>
+</div>

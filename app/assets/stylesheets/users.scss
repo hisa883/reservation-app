@@ -32,3 +32,12 @@
     vertical-align: middle;
   }  
 }
+
+.reservation-list {
+  table-layout: fixed;
+	width: 100%;
+  text-align: center;
+  td {
+    vertical-align: middle;  /* 中央揃え */
+  }
+}

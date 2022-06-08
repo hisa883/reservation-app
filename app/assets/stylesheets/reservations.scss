@@ -1,0 +1,26 @@
+// Place all the styles related to the reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#table-reservations {
+  table-layout: fixed;
+  vertical-align: center;
+  background-color: white;
+  tr{
+    vertical-align: middle;
+    border: none;
+  }
+  td{
+    border: none;
+    vertical-align: middle;
+  }
+}
+.time_h_m{
+  display: inline-block;
+}
+
+.border{
+  border: solid;
+  border-radius: 8px;
+  border: 10px double #eb6101;
+}

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center title">
+      <h1>予約詳細画面</h1>
+    </div>
+    <div class="col-12 mt-3 text-center content">
+      <div>
+        <label><strong>店舗：</strong></label>
+        <p style="display:inline;"><%= store_name(@reservation.store_id) %></p>
+      </div>
+      <div>
+        <label><strong>日付：</strong></label>
+        <p style="display:inline;"><%= l(@reservation.day, format: :default) %></p>
+      </div>
+      <div>
+        <label><strong>利用開始時間：</strong></label>
+        <p style="display:inline;"><%= @reservation.time %></p>
+      </div>
+      <div>
+        <label><strong>利用時間：</strong></label>
+        <p style="display:inline;"><%= @reservation.use_time %></p>
+      </div>
+    <div class="col-12 text-right">
+      <%= link_to '予約中の部屋', reservations_user_path(current_user) %>
+    </div>
+  </div>
+</div>

@@ -7,4 +7,8 @@ module ApplicationHelper
       page_name + " | " + base_title
     end
   end
+
+  def store_name(store_id)
+    Store.all.find(store_id).name
+  end
 end
